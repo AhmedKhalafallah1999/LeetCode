@@ -1,0 +1,36 @@
+// Link of the Problem:https://leetcode.com/problems/number-of-arithmetic-triplets/
+// description: 
+/* You are given a 0-indexed, strictly increasing integer array nums and a positive integer diff. A triplet (i, j, k) is an arithmetic triplet if the following conditions are met:
+
+i < j < k,
+nums[j] - nums[i] == diff, and
+nums[k] - nums[j] == diff.
+Return the number of unique arithmetic triplets.
+  */
+// Code With C++
+
+
+class Solution {
+public:
+    int arithmeticTriplets(vector<int>& nums, int diff) {
+        int v=0;
+        for (int i=0 ; i<nums.size() ; i++)
+        {
+            for (int j=1+i ; j<nums.size() ; j++)
+            {
+                if (abs(nums[i]-nums[j])==diff)
+                {
+                    for (int k=j+1 ; k<nums.size() ; k++)
+                    {
+                        if (abs(nums[k]-nums[j])==diff)
+                        {
+                            v++;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return v;
+    }
+};
