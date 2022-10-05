@@ -1,0 +1,34 @@
+// Link of the Problem: https://leetcode.com/problems/build-array-from-permutation/
+// description: 
+/*You are given an array of strings names, and an array heights that consists of distinct positive integers. Both arrays are of length n.
+
+For each index i, names[i] and heights[i] denote the name and height of the ith person.
+
+Return names sorted in descending order by the people's heights.
+
+ . */
+// Code With C++
+class Solution {
+public:
+    vector<string> sortPeople(vector<string>& names, vector<int>& heights) {
+        string name;
+        int swap;
+        for (int i=0 ; i<names.size() ; i++)
+        {
+            for (int j=i+1 ; j<names.size() ; j++)
+            {
+                if (heights[i]<heights[j])
+                {
+                   swap = heights[i]; 
+                    heights[i] = heights[j];
+                    heights[j] = swap;
+                    name = names[i];
+                    names[i] = names[j];
+                    names[j] = name;
+                    
+                }
+            }
+        }
+        return names;
+    }
+};
