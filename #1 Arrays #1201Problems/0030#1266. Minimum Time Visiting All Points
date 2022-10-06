@@ -16,14 +16,14 @@ You are allowed to pass through points that appear later in the order, but these
 // Code With C++
 class Solution {
 public:
-    int minTimeToVisitAllPoints(vector<vector<int>>& points) {
-        int res=0,sumLeft=0,x;
-        for (int i=0 ; i<points.size() ; i++){
-            for (int j=0 ; j<points[i].size() ; j++){
-             x = max(abs(points[i][j]-points[i+1][j]), res);
-            }
-            sumLeft+=x;
+    int minTimeToVisitAllPoints(vector<vector<int>>& points) 
+    {
+        int ans=0;
+        for(int i=1;i<points.size();i++)
+        {
+            ans+=max(abs(points[i][0]-points[i-1][0]),abs(points[i][1]-points[i-1][1]));
         }
-        return sumLeft;
+        return ans;
+        
     }
 };
