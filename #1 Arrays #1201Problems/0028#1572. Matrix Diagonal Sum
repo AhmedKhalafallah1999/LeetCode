@@ -1,0 +1,24 @@
+// Link :https://leetcode.com/problems/matrix-diagonal-sum/
+// description: 
+/*Given a square matrix mat, return the sum of the matrix diagonals.
+
+Only include the sum of all the elements on the primary diagonal and all the elements on the secondary diagonal that are not part of the primary diagonal.
+
+ 
+  */
+// Code With C++
+class Solution {
+public:
+    int diagonalSum(vector<vector<int>>& mat) {
+        int sumLeft=0;
+        for (int i=0 ; i<mat[0].size() ; i++){
+            sumLeft+=mat[i][i] + mat[i][(mat[i].size()-1)-i];
+        
+        }
+        if (mat.size()%2!=0){
+            int p = mat.size()/2;
+        sumLeft-=mat[p][p];
+            }
+        return sumLeft;
+    }
+};
