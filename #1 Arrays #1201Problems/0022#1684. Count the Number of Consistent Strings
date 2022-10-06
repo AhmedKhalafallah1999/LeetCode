@@ -1,0 +1,32 @@
+// Link of the Problem:https:https://leetcode.com/problems/count-the-number-of-consistent-strings/
+// description: 
+/* You are given a string allowed consisting of distinct characters and an array of strings words. A string is consistent if all characters in the string appear in the string allowed.
+
+Return the number of consistent strings in the array words. */
+// Code With C++
+class Solution {
+public:
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        int c=0,d=0;
+        for (int i=0 ; i<words.size() ; i++){
+            for (int j=0 ; j<words[i].size() ; j++){
+                for (int k=0 ; k<allowed.size() ; k++){
+                if (words[i][j]==allowed[k]){
+                    c++;
+                    break;
+                }
+                }
+                
+                
+            }
+            if (c==words[i].size()){
+                    d++;
+                    c=0;
+                }
+            else{
+                c=0;
+            }
+        }
+        return d;
+    }
+};
