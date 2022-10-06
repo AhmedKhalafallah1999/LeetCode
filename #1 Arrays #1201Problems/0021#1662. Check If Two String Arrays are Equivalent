@@ -1,0 +1,32 @@
+// Link of the Problem:https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/
+// description: 
+/* Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
+
+A string is represented by an array if the array elements concatenated in order forms the string.. */
+// Code With C++
+class Solution {
+public:
+    bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) {
+        string s1="",s2="";
+        for (int i=0 ; i<word1.size() ; i++)
+        {
+            for (int j=0 ; j<word1[i].size() ; j++){
+                s1+=word1[i][j];
+            }
+        }
+        for (int i=0 ; i<word2.size() ; i++)
+        {
+            for (int j=0 ; j<word2[i].size() ; j++){
+                s2+=word2[i][j];
+            }
+        }
+        for (int i=0 ; i<s1.size() ; i++)
+        {
+            if (s1[i]!=s2[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+};
