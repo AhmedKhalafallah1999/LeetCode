@@ -1,0 +1,20 @@
+// Link of the Problem:https://leetcode.com/problems/find-greatest-common-divisor-of-array/
+// description: 
+/* Given an integer array nums, return the greatest common divisor of the smallest number and largest number in nums.
+
+The greatest common divisor of two numbers is the largest positive integer that evenly divides both numbers. */
+// Code With C++
+class Solution {
+public:
+    int findGCD(vector<int>& nums) {
+        int y;
+        sort (nums.begin(),nums.end());
+        for (int i= nums[0] ; i>=1 ; i--){
+            if (nums[nums.size()-1]%i==0 && nums[0]%i==0){
+                y = i;
+                break;
+            }
+        }
+        return y;
+    }
+};
