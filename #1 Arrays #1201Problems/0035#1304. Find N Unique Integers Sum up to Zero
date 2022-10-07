@@ -1,0 +1,24 @@
+// Link of the Problem:https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/
+// description: 
+/* Given an integer n, return any array containing n unique integers such that they add up to 0. */
+// Code With C++
+class Solution {
+public:
+    vector<int> sumZero(int n) {
+        vector<int>num;
+        if (n%2==0){
+            for (int i=1 ; i<=(n/2) ; i++){
+                num.push_back(i);
+                num.push_back(-i);
+            }
+        }
+        else{
+            for (int i=1 ; i<=(n/2) ; i++){
+                num.push_back(i);
+                num.push_back(-i);
+            }
+            num.push_back(0);
+        }
+        return num;
+    }
+};
