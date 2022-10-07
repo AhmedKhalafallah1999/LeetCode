@@ -1,0 +1,52 @@
+//https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/
+// description: 
+/*You are given an integer array nums (0-indexed). In one operation, you can choose an element of the array and increment it by 1.
+
+For example, if nums = [1,2,3], you can choose to increment nums[1] to make nums = [1,3,3].
+Return the minimum number of operations needed to make nums strictly increasing.
+
+An array nums is strictly increasing if nums[i] < nums[i+1] for all 0 <= i < nums.length - 1. An array of length 1 is trivially strictly increasing.
+ 
+  */
+// Code With C++
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        int s=0;
+        for(int i=0;i<nums.size()-1;i++){
+            if(nums[i+1]<=nums[i]){
+                s+=nums[i]-nums[i+1]+1;
+                nums[i+1]+=nums[i]-nums[i+1]+1;
+            }    
+        }
+        return s; 
+    }
+};
+// time limit 
+/* 
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        int c=0,count;
+        for (int k=0 ; k>=0 ; k++){
+        for (int i=0 ; i<nums.size()-1  ;i++){
+            
+            if (nums[nums.size()-1-i]<=nums[nums.size()-2-i]){
+                nums[nums.size()-1-i]++;
+                c++;
+            }
+            else{
+                count++;
+            }
+        }
+            if (count==nums.size()-1){
+                break;
+            }
+            else{
+                count=0;
+            }
+        }
+        return c;
+    }
+};
+*/
