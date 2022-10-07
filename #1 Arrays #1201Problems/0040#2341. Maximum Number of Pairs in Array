@@ -1,0 +1,39 @@
+// Link of the Problem: https://leetcode.com/problems/maximum-number-of-pairs-in-array/
+// description: 
+/*You are given a 0-indexed integer array nums. In one operation, you may do the following:
+
+Choose two integers in nums that are equal.
+Remove both integers from nums, forming a pair.
+The operation is done on nums as many times as possible.
+
+Return a 0-indexed integer array answer of size 2 where answer[0] is the number of pairs that are formed and answer[1] is the number of leftover integers in nums after doing the operation as many times as possible. */
+// Code With C++
+class Solution {
+public:
+    vector<int> numberOfPairs(vector<int>& nums) 
+    {
+           int idx=0;
+           sort(nums.begin(),nums.end());
+
+           int pair_count=0;
+           int left_count=0;
+
+           while(idx<nums.size())
+           {
+              if(idx<nums.size()-1 and nums[idx]==nums[idx+1])
+              {
+                 pair_count++;
+                 idx=idx+2;	
+              }
+              else
+              {
+                left_count++;
+                idx=idx+1;
+              }
+           }
+           if(idx==nums.size()-1)
+           left_count++;
+
+           return {pair_count,left_count};   
+    }
+};
