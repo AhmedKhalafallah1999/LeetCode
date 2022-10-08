@@ -1,0 +1,27 @@
+// Link of the Problem:https://leetcode.com/problems/merge-similar-items/
+// description: 
+/*
+
+You are given two 2D integer arrays, items1 and items2, representing two sets of items. Each array items has the following properties:
+
+items[i] = [valuei, weighti] where valuei represents the value and weighti represents the weight of the ith item.
+The value of each item in items is unique.
+Return a 2D integer array ret where ret[i] = [valuei, weighti], with weighti being the sum of weights of all items with value valuei.
+
+Note: ret should be returned in ascending order by value.
+
+
+  */
+  
+  
+class Solution {
+public:
+    vector<vector<int>> mergeSimilarItems(vector<vector<int>>& a, vector<vector<int>>& b) {
+    map<int,int> mp;
+    for(auto i:a) mp[i[0]]+= i[1];
+    for(auto i:b) mp[i[0]]+= i[1];
+    vector<vector<int>> v;
+    for(auto i:mp) v.push_back({i.first,i.second});
+    return v;
+    }
+};
