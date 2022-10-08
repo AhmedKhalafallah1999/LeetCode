@@ -1,0 +1,28 @@
+// Link of the Problem:https://leetcode.com/problems/sum-of-unique-elements/
+// description: 
+/*You are given an integer array nums. The unique elements of an array are the elements that appear exactly once in the array.
+
+Return the sum of all the unique elements of nums.
+
+  */
+  
+  
+class Solution {
+public:
+    int sumOfUnique(vector<int>& nums) {
+        int coun=0,sum=0;
+        for (int i=0 ; i<nums.size() ;i++){
+            for (int j=0 ; j<nums.size() ; j++){
+                if (nums[i]==nums[j]){
+                    coun++;
+                }
+                
+            }
+            if (coun==1){
+                sum+=nums[i];
+            }
+            coun=0;
+        }
+        return sum;
+    }
+};
