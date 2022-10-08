@@ -1,0 +1,31 @@
+// Link of the Problem:https://leetcode.com/problems/n-repeated-element-in-size-2n-array/
+// description: 
+/*You are given an integer array nums with the following properties:
+
+nums.length == 2 * n.
+nums contains n + 1 unique elements.
+Exactly one element of nums is repeated n times.
+Return the element that is repeated n times.
+
+  */
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& nums) {
+        int times=nums.size()/2,coun=0;
+        for (int i=0 ; i<nums.size() ; i++){
+            for (int j=0 ; j<nums.size() ; j++){
+                if (nums[i]==nums[j]){
+                    coun++;
+                }
+            }
+            if (coun==times){
+                coun = nums[i];
+                break;
+            }
+            else{
+                coun=0;
+            }
+        }
+        return coun;
+    }
+};
