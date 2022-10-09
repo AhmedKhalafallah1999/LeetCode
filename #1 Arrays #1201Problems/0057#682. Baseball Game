@@ -1,0 +1,56 @@
+// Link of the Problem: https://leetcode.com/problems/baseball-game/
+
+// description: 
+/*
+You are keeping the scores for a baseball game with strange rules. At the beginning of the game, you start with an empty record.
+
+You are given a list of strings operations, where operations[i] is the ith operation you must apply to the record and is one of the following:
+
+An integer x.
+Record a new score of x.
+'+'.
+Record a new score that is the sum of the previous two scores.
+'D'.
+Record a new score that is the double of the previous score.
+'C'.
+Invalidate the previous score, removing it from the record.
+Return the sum of all the scores on the record after applying all the operations.
+
+The test cases are generated such that the answer and all intermediate calculations fit in a 32-bit integer and that all operations are valid.
+
+*/
+// Code With C++
+
+
+
+class Solution {
+public:
+    int calPoints(vector<string>& operations) {
+        vector<int>sub;
+        int sum=0;
+        for ( auto &x: operations){
+           
+             if (x == "C"){
+                
+               sub.pop_back(); 
+            }
+             else if (x== "D"){
+                
+              
+                sub.push_back(sub.back()*2);
+            }
+            else if (x=="+"){
+                sub.push_back(sub[sub.size()-1]+sub[sub.size()-2]);
+                                   }
+            else{
+                sub.push_back(stoi(x));
+            }
+            
+    }
+        for (auto &x:sub){
+            sum+=x;
+        }
+        
+        return sum;
+    }
+};
