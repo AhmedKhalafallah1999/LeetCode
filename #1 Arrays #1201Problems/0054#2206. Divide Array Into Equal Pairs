@@ -1,0 +1,27 @@
+// Link of the Problem: https://leetcode.com/problems/divide-array-into-equal-pairs/
+// description: 
+/* You are given an integer array nums consisting of 2 * n integers.
+
+You need to divide nums into n pairs such that:
+
+Each element belongs to exactly one pair.
+The elements present in a pair are equal.
+Return true if nums can be divided into n pairs, otherwise return false.
+*/
+// Code With C++
+
+class Solution {
+public:
+    bool divideArray(vector<int>& nums) {
+        int n=nums.size();
+        int i=1;
+        sort(nums.begin(),nums.end());
+        while(i<n){
+            if(nums[i]!=nums[i-1])
+                return false;
+            else
+                i=i+2;
+        }
+        return true;
+    }
+};
