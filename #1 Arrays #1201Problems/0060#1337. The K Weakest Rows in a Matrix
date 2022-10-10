@@ -1,0 +1,45 @@
+// Link of the Problem:https://leetcode.com/tag/array/
+// description: 
+/*
+You are given an m x n binary matrix mat of 1's (representing soldiers) and 0's (representing civilians). The soldiers are positioned in front of the civilians. That is, all the 1's will appear to the left of all the 0's in each row.
+
+A row i is weaker than a row j if one of the following is true:
+
+The number of soldiers in row i is less than the number of soldiers in row j.
+Both rows have the same number of soldiers and i < j.
+Return the indices of the k weakest rows in the matrix ordered from weakest to strongest.
+*/
+
+
+// Code With C++
+class Solution {
+public:
+   bool sortbysec(const pair<int,int> &a,
+              const pair<int,int> &b)
+{
+    return (a.second < b.second);
+}
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        int coun;
+         vector <pair<int,int> > o;
+        vector<int>y;
+        for (int i=0 ; i<mat.size() ; i++){
+            coun=0;
+            for (int j=0 ; j<mat[i].size() ; j++){
+                if (mat[i][j]==1){
+                    coun++;
+                }
+            }
+             o.push_back({i, coun});
+        }
+        std::sort(o.begin(), o.end());
+        for (int i=0 ; i<k ; k++){
+            y.push_back(o[i][0]);
+        }
+        
+        
+        
+        return y;
+        
+    }
+};
