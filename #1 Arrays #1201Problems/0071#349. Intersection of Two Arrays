@@ -1,0 +1,38 @@
+vhttps: https://leetcode.com/problems/intersection-of-two-arrays/submissions/
+// description: 
+/*
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+ . */
+// Code With C++
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int>A,B,an;
+        unordered_set<int>::iterator it;
+        vector<int>ans;         
+        for (int i=0 ; i<nums1.size() ;i++){
+           A.insert(nums1[i]);
+        }
+         for (int i=0 ; i<nums2.size() ;i++){
+           B.insert(nums2[i]);
+        }
+        for (it = A.begin() ; it!=A.end() ; ++it){
+           if (B.count(*it)==1){
+               an.insert(*it);
+           }
+            }
+        for (it = B.begin() ; it!=B.end() ; ++it){
+           if (A.count(*it)==1){
+               an.insert(*it);
+           }
+            }
+        for (it = an.begin() ; it!=an.end() ; ++it){
+          ans.emplace_back(*it);
+           }
+            
+        
+        
+
+        return ans;
+    }
+};
