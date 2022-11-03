@@ -1,0 +1,31 @@
+vhttps: https://leetcode.com/problems/minimum-absolute-difference/
+// description: 
+/*
+Given an array of distinct integers arr, find all pairs of elements with the minimum absolute difference of any two elements.
+
+Return a list of pairs in ascending order(with respect to pairs), each pair [a, b] follows
+
+a, b are from arr
+a < b
+b - a equals to the minimum absolute difference of any two elements in arr
+ 
+
+
+  . */
+class Solution {
+public:
+    vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+        vector<vector<int>>out;
+        int x=INT_MAX;
+        sort(arr.begin(),arr.end());
+        for (int i=0 ; i<arr.size()-1 ; i++){
+                x=min(abs(arr[i+1]-arr[i]),x);
+            }
+        for (int i=0; i<arr.size()-1;i++){
+            if(arr[i+1]-arr[i] ==x){
+                out.push_back({arr[i],arr[i+1]});
+            }
+        }
+        return out;
+    }
+};
