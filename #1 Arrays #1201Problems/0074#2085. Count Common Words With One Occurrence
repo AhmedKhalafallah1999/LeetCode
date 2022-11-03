@@ -1,0 +1,34 @@
+vhttps: https://leetcode.com/problems/count-common-words-with-one-occurrence/
+// description: 
+/*
+Given two string arrays words1 and words2, return the number of strings that appear exactly once in each of the two arrays.
+
+ 
+
+
+ 
+
+
+  . */
+class Solution {
+public:
+    int countWords(vector<string>& words1, vector<string>& words2) {
+        map<string,int>z;
+        int coun=0;
+        for (auto x: words1){
+            z[x]++;
+        }
+        for (auto x:words2){
+            if (z[x]<2){
+                z[x]--;
+            }
+        }
+        for (auto x:z){
+            if (x.second==0){
+                coun++;
+            }
+        }
+        
+        return coun;
+    }
+};
