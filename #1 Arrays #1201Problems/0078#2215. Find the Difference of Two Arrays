@@ -1,0 +1,48 @@
+vhttps: https://leetcode.com/problems/find-the-difference-of-two-arrays/submissions/
+// description: 
+/*
+Given two 0-indexed integer arrays nums1 and nums2, return a list answer of size 2 where:
+
+answer[0] is a list of all distinct integers in nums1 which are not present in nums2.
+answer[1] is a list of all distinct integers in nums2 which are not present in nums1.
+Note that the integers in the lists may be returned in any order.
+
+ 
+
+
+
+ 
+
+
+  . */
+class Solution {
+public:
+    vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+   int n=nums1.size();
+   int m=nums2.size();
+ set<int>s1,s2;
+           vector<vector<int>>k(2);
+            for (auto i : nums1){
+                    s1.insert(i);
+            }
+            for (auto i : nums2){
+                    s2.insert(i);
+            }
+            for (auto i : s1){
+                    if (s2.find(i)==s2.end())
+                    {
+                            k[0].push_back(i);
+                    }
+            }
+             for (auto i : s2){
+                    if (s1.find(i)==s1.end())
+                    {
+                            k[1].push_back(i);
+                    }
+            }
+            
+            
+            return k;
+                    
+    }
+};
