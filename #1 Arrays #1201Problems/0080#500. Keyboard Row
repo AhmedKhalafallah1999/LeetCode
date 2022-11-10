@@ -15,6 +15,7 @@ the third row consists of the characters "zxcvbnm".
 
 
   . */
+  // First Solution 50% Speed
 class Solution {
 public:
     vector<string> findWords(vector<string>& words) {
@@ -78,5 +79,34 @@ public:
             
     }
             return res;
+    }
+};
+
+// Second Solution 100% speed
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+        string a = "qwertyuiopQWERTYUIOP";
+        string b = "asdfghjklASDFGHJKL";
+        string c = "zxcvbnmZXCVBNM";
+            map<char,int>mp;
+            vector<string>out;
+            for (auto &x : a) mp[x]=1;
+            for (auto &x : b) mp[x]=2;
+            for (auto &x : c) mp[x]=3;
+            for (auto &x : words){
+                    int f = mp[x[0]],ok=1;
+                    for (auto &z : x){
+                            if (f != mp[z]){
+                                    ok = 0 ;
+                                    break;
+                            }
+                    }
+                    if (ok) out.push_back(x);
+                    
+            }
+
+           
+           return out;
     }
 };
