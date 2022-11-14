@@ -1,0 +1,44 @@
+vhttps: https://leetcode.com/problems/relative-sort-array/
+// description: 
+/*
+Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.
+
+Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2. Elements that do not appear in arr2 should be placed at the end of arr1 in ascending order.
+
+ 
+
+
+  . */
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        unordered_map<int,int>mp1;
+        unordered_map<int,int>mp2;
+        vector<int>in;
+        vector<int>out;        
+        for (auto &x:arr1){
+            mp1[x]++;
+        }
+        for (auto &x:arr2){
+            if (mp1.find(x) !=mp1.end() )
+                        while (mp1[x]){
+                            in.push_back(x);
+                            mp1[x]--;
+                        }           
+                }
+        for (auto &x:mp1){
+            while (x.second!=0){
+                out.push_back(x.first);
+                x.second--;
+            }
+        }
+        sort(out.begin(),out.end());
+        for (auto &y:out){
+            in.push_back(y);
+        }
+            
+        
+       
+        return in;
+    }
+};
