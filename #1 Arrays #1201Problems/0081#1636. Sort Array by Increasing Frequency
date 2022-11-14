@@ -1,0 +1,48 @@
+vhttps: https://leetcode.com/problems/sort-array-by-increasing-frequency/
+// description: 
+/*
+Given an array of integers nums, sort the array in increasing order based on the frequency of the values. If multiple values have the same frequency, sort them in decreasing order.
+
+Return the sorted array.
+
+
+ 
+
+
+  . */
+ class Solution {
+public:
+    bool static comp(pair<int,int>a,pair<int,int>b){
+        // the first colum store the key and the second store frequency
+        // if the frequency equal resturn based on the large key
+        // if else return based on the less frequency
+        if (a.second==b.second){
+            return a>b;
+        }
+            else{
+                return a.second<b.second;
+        }
+    }
+    vector<int> frequencySort(vector<int>& nums) {
+        unordered_map<int,int>mp;
+        vector<pair<int,int>>o;
+        vector<int>out;
+        
+        for (auto &x :nums){
+            mp[x]++;
+        }
+        for (auto &x:mp){
+            
+                o.push_back(x);
+            
+        }
+        sort(o.begin(),o.end(),comp);
+        for (int i=0 ; i<o.size(); i++){
+            while (o[i].second>0){
+                out.push_back(o[i].first);
+                o[i].second--;
+            }
+        }
+        return out;
+    }
+};
