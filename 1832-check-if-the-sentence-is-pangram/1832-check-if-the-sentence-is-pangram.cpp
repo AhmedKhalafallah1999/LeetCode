@@ -1,10 +1,7 @@
 class Solution {
 public:
     bool checkIfPangram(string sentence) {
-        set<char>st;
-        for (int i=0 ; i<sentence.size() ; i++){
-            st.insert(sentence[i]);
-        }
+        unordered_set<char>st(sentence.begin(),sentence.end());
         if (st.size()==26) return true;
         return false;
     }
