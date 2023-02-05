@@ -1,0 +1,28 @@
+// Link for the problem: https://leetcode.com/problems/valid-parentheses/
+// Example:
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+// code:
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char>st;
+        for (char &i : s){
+            if (!st.empty()){
+                if (st.top()-i==-1) st.pop();
+                else if (st.top()-i==-2) st.pop();
+                else st.push(i);
+                
+            }
+            else st.push(i);
+        }
+        if (st.empty()) return true;
+        return false;
+    }
+};
